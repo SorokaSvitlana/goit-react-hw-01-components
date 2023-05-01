@@ -1,31 +1,40 @@
+import PropTypes from 'prop-types';
+import {ProfileContainer, ProfileDescription, Avatar,Name,  Info, StatList, StatItem, StatLabel, StatQuantity} from "./Profile.Styled"
 export const Profile = ({ username, tag, location, avatar, stats }) => {
     return (
-      <div>
-   <div className="description">
-    <img
+      <ProfileContainer>
+   <ProfileDescription>
+    <Avatar
       src={avatar}
       alt="User avatar"
-      class="avatar"
     />
-    <p className="name">{username}</p>
-    <p className="tag">@{tag}</p>
-    <p className="location">Salvador, Brasil</p>
-  </div>
+    <Name>{username}</Name>
+    <Info>@{tag}</Info>
+    <Info>{location}</Info>
+  </ProfileDescription>
 
-  <ul className="stats">
-    <li>
-      <span className="label">Followers</span>
-      <span className="quantity">{stats.followers}</span>
-    </li>
-    <li>
-      <span className="label">Views</span>
-      <span className="quantity">{stats.views}</span>
-    </li>
-    <li>
-      <span className="label">Likes</span>
-      <span className="quantity">{stats.likes}</span>
-    </li>
-  </ul>
-      </div>
+  <StatList>
+    <StatItem>
+      <StatLabel>Followers</StatLabel>
+      <StatQuantity>{stats.followers}</StatQuantity>
+    </StatItem>
+    <StatItem>
+      <StatLabel>Views</StatLabel>
+      <StatQuantity>{stats.views}</StatQuantity>
+    </StatItem>
+    <StatItem>
+      <StatLabel>Likes</StatLabel>
+      <StatQuantity>{stats.likes}</StatQuantity>
+    </StatItem>
+  </StatList>
+      </ProfileContainer>
     );
+  };
+
+  PropTypes.PropTypes = {
+    avatar: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    stats: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.array.isRequired,
   };
